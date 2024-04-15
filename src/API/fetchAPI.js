@@ -1,9 +1,10 @@
 const fetchAPI = async (props) => {
     const { method, endpoint, body = {}, token = '' } = props;
     let options;
-    if (method === 'GET') {
+    if (method === 'POST') {
         options = {
-            method: 'GET',
+            method: method,
+            body: JSON.stringify(body),
             headers: {
                 "Content-Type": "application/json", 
                 "Authorization": `beaer ${token}`
@@ -12,8 +13,7 @@ const fetchAPI = async (props) => {
     }
     else {
         options = {
-            method: 'POST',
-            body: JSON.stringify(body),
+            method: method,
             headers: {
                 "Content-Type": "application/json", 
                 "Authorization": `beaer ${token}`
@@ -24,7 +24,6 @@ const fetchAPI = async (props) => {
     try {
         const response = await fetch(`https://decentralized-storage-backend.onrender.com/${endpoint}`, options);
         const data = await response.json();
-        console.log(data);
         data.status = response.status
         return data;
     } catch (error) {

@@ -7,7 +7,7 @@ import {
   MDBModalBody
 } from 'mdb-react-ui-kit';
 
-export default function Modal(props) {
+const Modal = (props) => {
   const [topRightModal, setTopRightModal] = useState(true);
 
   const toggleOpen = () => setTopRightModal(!topRightModal);
@@ -34,3 +34,5 @@ export default function Modal(props) {
     </MDBModal>
   );
 }
+
+export default Modal;

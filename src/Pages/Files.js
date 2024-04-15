@@ -1,6 +1,6 @@
 import React from "react";
 
-function Files(){
+const Files = () => {
     return (
         <div>
             Sanjay Nithin

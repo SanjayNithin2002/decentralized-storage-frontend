@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MDBBtn, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBIcon, MDBSpinner } from 'mdb-react-ui-kit';
 import { useNavigate } from 'react-router-dom';
 
-export default function Popover(props) {
+const Popover = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [spinner, setSpinner] = useState(false);
   const user = JSON.parse(localStorage.getItem('user'));
@@ -40,3 +40,5 @@ export default function Popover(props) {
     </MDBPopover>
   );
 }
+
+export default Popover;

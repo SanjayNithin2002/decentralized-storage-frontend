@@ -45,4 +45,36 @@ const getUsersByDept = async () => {
     }
 };
 
-export { loginUser, signupUser, getUsersByDept };
+const approveUserById = async (id) => {
+    try {
+        const token = localStorage.getItem('token');
+        if (token === null) {
+            throw Error('Login again.');
+        }
+        return fetchAPI({
+            method: 'PATCH',
+            endpoint: `users/approve/${id}`,
+            token: token
+        })
+    } catch (error) {
+        throw error;
+    }
+};
+
+const deleteUserById = async (id) => {
+    try {
+        const token = localStorage.getItem('token');
+        if (token === null) {
+            throw Error('Login again.');
+        }
+        return fetchAPI({
+            method: 'DELETE',
+            endpoint: `users/${id}`,
+            token: token
+        })
+    } catch (error) {
+        throw error;
+    }
+};
+
+export { loginUser, signupUser, getUsersByDept, approveUserById, deleteUserById };

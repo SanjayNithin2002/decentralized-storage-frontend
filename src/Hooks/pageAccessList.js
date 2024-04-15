@@ -1,36 +1,7 @@
-const pageAccessList = (userType) => {
-    const pages = {
-        "users": [
-            {
-                'name': 'Home',
-                'endpoint': '/home'
-            },
-            {
-                'name': 'Files',
-                'endpoint': '/files'
-            }
-        ],
-        "dataowners": [
-            {
-                'name': 'Home',
-                'endpoint': '/home'
-            },
-            {
-                'name': 'Files',
-                'endpoint': '/files'
-            }, 
-            {
-                'name': 'Users',
-                'endpoint': '/users'
-            }, 
-            {
-                'name': 'Upload',
-                'endpoint': '/upload'
-            }
-        ]
-    }
+import PageAccess from '../Resources/PageAccess.json';
 
-    return pages[userType];
+const pageAccessList = (userType) => {
+    return PageAccess[userType];
 }
 
 export default pageAccessList;

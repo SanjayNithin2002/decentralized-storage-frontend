@@ -1,8 +1,8 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit'; // Import necessary MDBootstrap components
+import { MDBContainer, MDBCol, MDBIcon } from 'mdb-react-ui-kit'; // Import necessary MDBootstrap components
 import { useNavigate } from 'react-router-dom';
 
-function NotFound() {
+const NotFound = () => {
   const navigate = useNavigate();
   const redirectToHome = () => {
     navigate('/');

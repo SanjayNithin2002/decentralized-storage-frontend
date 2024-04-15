@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signupUser } from '../API/Actions';
 import Roles from '../Resources/Roles.json';
 import Modal from '../Components/Modal';
+import InfoPane from '../Components/InfoPane';
 import {
     MDBContainer,
     MDBCol,
@@ -13,18 +14,13 @@ import {
     MDBSpinner
 } from 'mdb-react-ui-kit';
 
-function Signup() {
+const Signup = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const [modalContent, setModalContent] = useState(null);
     const [spinner, setSpinner] = useState(false);
     const [department, setDepartment] = useState('');
     const [selected, setSelected] = useState(false);
     const navigate = useNavigate();
-
-    const navigateToLogin = () => {
-        navigate('/login');
-    }
-
     const onSubmit = async (data) => {
         setSpinner(true);
         try {
@@ -52,28 +48,10 @@ function Signup() {
             setTimeout(() => setModalContent(null), 5000);
         }
     };
-
-
     return (
         <MDBContainer fluid className="my-5 mt-0">
             <MDBRow className="align-items-start">
-                <MDBCol col='18' md='7' className='p-5 text-center text-md-start d-flex flex-column justify-content-center'>
-                    <h1 className="my-5 display-3 fw-bold ls-tight px-3">
-                        Decentralized Storage <br />
-                        <span className="text-primary">for your organization</span>
-                    </h1>
-                    <MDBRow className='px-3 col-md-11'>
-                        <p className='px-3' style={{ color: 'hsl(217, 10%, 50.8%)', textAlign: 'justify', fontSize: '1.25rem' }}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-                    </MDBRow>
-                </MDBCol>
+                <InfoPane />
                 <MDBCol col='6' md='4' className="text-center text-md-end mt-5 px-3">
                     <div className='square border rounded-7'>
                         <div className='px-3 mt-5'>
@@ -149,7 +127,7 @@ function Signup() {
                                     <span className='px-2'>Signup</span>
                                 </MDBBtn>
                             </form>
-                            <p className="mb-5 pb-lg-2 text-center">Already have an account? <span className='pointer text-primary' onClick={navigateToLogin}>Login</span></p>
+                            <p className="mb-5 pb-lg-2 text-center">Already have an account? <span className='pointer text-primary' onClick={e => navigate('/login')}>Login</span></p>
                         </div>
                     </div>
                 </MDBCol>

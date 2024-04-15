@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import Navbar from "../Components/Navbar";
-import Table from "../Components/Table";
+import Navbar from "../Components/Navbar/Navbar";
+import Table from "../Components/UserTable";
 import { MDBContainer } from 'mdb-react-ui-kit';
-function Home() {
+
+const Home = () => {
     return (
         <MDBContainer>
             <Table/>

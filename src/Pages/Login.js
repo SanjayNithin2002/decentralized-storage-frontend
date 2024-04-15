@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { loginUser } from '../API/Actions';
 import { useNavigate } from "react-router-dom";
 import Modal from '../Components/Modal';
+import InfoPane from '../Components/InfoPane';
 import {
     MDBContainer,
     MDBCol,
@@ -13,15 +14,12 @@ import {
     MDBSpinner
 } from 'mdb-react-ui-kit';
 
-function Login() {
+const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [userType, setUserType] = useState('users');
     const [modalContent, setModalContent] = useState(null);
     const [spinner, setSpinner] = useState(false);
     const navigate = useNavigate();
-    const navigateToSignup = () => {
-        navigate('/signup');
-    }
     const onSubmit = async (data) => {
         setSpinner(true);
         try {
@@ -33,10 +31,9 @@ function Login() {
             if (response.status === 201) {
                 setModalContent(response.message);
                 localStorage.setItem('token', response.token);
-                localStorage.setItem('userType', response.userType);
+                localStorage.setItem('userType', userType);
                 localStorage.setItem('user', JSON.stringify(response.user));
                 localStorage.setItem('loginTime', Date.now());
-                console.log('redirecting...');
                 setTimeout(() => navigate('/home'), 1000);
             }
             else if (response.status === 401) {
@@ -56,30 +53,8 @@ function Login() {
 
     return (
         <MDBContainer fluid className="my-5 mt-0">
-
             <MDBRow className="align-items-start">
-
-                <MDBCol col='18' md='7' className='p-5 text-center text-md-start d-flex flex-column justify-content-center'>
-                    <h1 className="my-5 display-3 fw-bold ls-tight px-3">
-                        Decentralized Storage <br />
-                        <span className="text-primary">for your organization</span>
-                    </h1>
-
-                    <MDBRow className='px-3 col-md-11'>
-                        <p className='px-3' style={{ color: 'hsl(217, 10%, 50.8%)', textAlign: 'justify', fontSize: '1.25rem' }}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-                    </MDBRow>
-
-
-                </MDBCol>
-
+                <InfoPane/>
                 <MDBCol col='6' md='4' className="text-center text-md-end my-5 px-3 pt-5">
                     <div className='square border rounded-7'>
                         <div className='px-3 mt-5'>
@@ -123,17 +98,15 @@ function Login() {
                                         inline
                                     />
                                 </div>
-
                                 <MDBBtn className="mb-4 w-100" size="lg" type="submit">
                                     {spinner && <MDBSpinner size='sm' role='status' tag='span' />}
                                     <span className='px-2'>Login</span>
                                 </MDBBtn>
                             </form>
-                            <p className="mb-5 pb-lg-2 text-center">Don't have an account? <span className='pointer text-primary' onClick={navigateToSignup}>Signup</span></p>
+                            <p className="mb-5 pb-lg-2 text-center">Don't have an account? <span className='pointer text-primary' onClick={e => navigate('/signup')}>Signup</span></p>
                         </div>
                     </div>
                 </MDBCol>
-
             </MDBRow>
             {modalContent !== null &&
                 <Modal title={modalContent} />
