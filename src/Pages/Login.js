@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { loginUser } from '../Hooks/Login';
+import { loginUser } from '../API/Actions';
 import { useNavigate } from "react-router-dom";
 import Modal from '../Components/Modal';
 import {

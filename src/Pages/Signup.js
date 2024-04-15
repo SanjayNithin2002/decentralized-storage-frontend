@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
-import { signupUser } from '../Hooks/Signup';
-import Roles from '../Roles.json';
+import { signupUser } from '../API/Actions';
+import Roles from '../Resources/Roles.json';
 import Modal from '../Components/Modal';
 import {
     MDBContainer,

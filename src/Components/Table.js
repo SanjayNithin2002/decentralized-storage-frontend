@@ -1,28 +1,39 @@
 import React, { useState } from 'react';
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBContainer } from 'mdb-react-ui-kit';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBContainer, MDBIcon } from 'mdb-react-ui-kit';
 import { useEffect } from 'react';
 import Modal from '../Components/Modal';
-import { getUsersByDept } from '../Hooks/Users';
+import {getUsersByDept} from '../API/Actions';
 
 
 export default function Table() {
     const [users, setUsers] = useState(null);
     const [modalContent, setModalContent] = useState(null);
     useEffect(() => {
-        try {
-            const data = getUsersByDept();
-            if (data.status === 200) {
-                setUsers(data);
-                console.log(data);
+        const fetchData = async () => {
+            try {
+                const data = await getUsersByDept(); // Await for the promise to resolve
+                if (data.status === 200) {
+                    setUsers(data);
+                } else if (data.status >= 400 && data.status <= 500) {
+                    throw new Error(data.message || data.error || 'Unable to fetch');
+                }
+            } catch (err) {
+                setModalContent(err.message);
             }
-            else if (data.status >= 400 && data.status <= 500) {
-                throw Error(data.message || data.error || 'Unable to fetch');
-            }
-        }
-        catch (err) {
-            setModalContent(err.message)
-        }
-    }, [users])
+        };
+
+        fetchData(); // Call the async function
+    }, [users]);
+
+    const handleApprove = (e) => {
+        console.log(e);
+    }
+
+    const handleDelete = (e) => {
+        console.log(e);
+    }
+
+
     return (
         <MDBContainer>
             <MDBTable align='middle' hover>
@@ -31,14 +42,15 @@ export default function Table() {
                         <th scope='col'>Name</th>
                         <th scope='col'>Role</th>
                         <th scope='col'>Status</th>
-                        <th scope='col'>Actions</th>
+                        <th scope='col'>Approve</th>
+                        <th scope='col'>Delete</th>
                     </tr>
                 </MDBTableHead>
                 <MDBTableBody>
                     {users !== null &&
                         users.user.map((user, index) => {
                             return (
-                                <tr>
+                                <tr key={user.id}>
                                     <td>
                                         <div className='d-flex align-items-center'>
                                             <img
@@ -54,17 +66,22 @@ export default function Table() {
                                         </div>
                                     </td>
                                     <td>
-                                        <p className='fw-normal mb-1'>{user.role.split('_')}</p>
+                                        <p className='fw-normal mb-1'>{user.role.split('_').join(' ')}</p>
                                         <p className='text-muted mb-0'>{user.department}</p>
                                     </td>
                                     <td>
-                                        <MDBBadge color='success' pill>
-                                            Active
+                                        <MDBBadge color={user.status === 'Pending' ? 'warning' : 'success'} pill>
+                                            {user.status}
                                         </MDBBadge>
                                     </td>
                                     <td>
-                                        <MDBBtn color='link' rounded size='sm'>
-                                            Edit
+                                        <MDBBtn color='primary' rippleColor='light' className={`rounded-1 ${user.status === 'Pending' ? '' : 'disabled'}`} onClick={e => handleApprove(user.id)} size='sm'>
+                                            Approve
+                                        </MDBBtn>
+                                    </td>
+                                    <td>
+                                        <MDBBtn color='danger' rippleColor='light' className='rounded-1' size='sm' onClick={e => handleDelete(user.id)}>
+                                            <MDBIcon fas icon="trash" />
                                         </MDBBtn>
                                     </td>
                                 </tr>
