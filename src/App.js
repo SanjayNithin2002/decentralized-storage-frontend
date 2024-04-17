@@ -5,6 +5,7 @@ import Signup from './Pages/Signup';
 import Home from './Pages/Home';
 import Files from './Pages/Files';
 import Users from './Pages/Users';
+import Upload from './Pages/Upload';
 import NotFound from './Pages/NotFound';
 import validateLogin from './Hooks/validateLogin';
 import getUserType from './Hooks/getUserType';
@@ -22,6 +23,7 @@ function App() {
         {isLoggedIn && <Route exact path="/home" element={<Home />} />}
         {isLoggedIn && <Route exact path="/files" element={<Files />} />}
         {isLoggedIn && getUserType() === 'dataowners' && <Route exact path="/users" element={<Users />} />}
+        {isLoggedIn && getUserType() === 'dataowners' && <Route exact path="/upload" element={<Upload />} />}
 
         {!isLoggedIn && <Route exact path="/home" element={<Navigate to="/login" />} />}
         {!isLoggedIn && <Route exact path="/files" element={<Navigate to="/login" />} />}

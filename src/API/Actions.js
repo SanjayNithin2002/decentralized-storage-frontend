@@ -1,4 +1,4 @@
-import fetchAPI from './fetchAPI';
+import { fetchAPI, fetchAPIForFile } from './fetchAPI';
 
 const loginUser = async (props) => {
     const { email, password, userType } = props;
@@ -77,4 +77,19 @@ const deleteUserById = async (id) => {
     }
 };
 
-export { loginUser, signupUser, getUsersByDept, approveUserById, deleteUserById };
+const postFile = async (props) => {
+    const { title, role, key, file, token } = props;
+    return fetchAPIForFile({
+        method: 'POST',
+        endpoint: `files`,
+        body: {
+            title,
+            role,
+            key,
+            file
+        },
+        token: token
+    });
+}
+
+export { loginUser, signupUser, getUsersByDept, approveUserById, deleteUserById, postFile };
