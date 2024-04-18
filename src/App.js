@@ -8,9 +8,14 @@ import validateLogin from './Hooks/validateLogin';
 import Loader from './Components/Loader';
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const updateLoginState = (flag) => {
+    setIsLoggedIn(flag);
+  }
 
   useEffect(() => {
-    validateLogin();
+    setIsLoggedIn(validateLogin());
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -20,10 +25,10 @@ const App = () => {
     <Router>
       {!loading &&
         <Routes>
-          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/login" element={<Login updateLoginState={updateLoginState}/>} />
           <Route exact path="/signup" element={<Signup />} />
-          {localStorage.getItem('loginTime') && <Route exact path="/" element={<Tabs />} />}
-          {!localStorage.getItem('loginTime') && <Route exact path="/" element={<Navigate to="/login" />} />}
+          {isLoggedIn && <Route exact path="/" element={<Tabs />} />}
+          {!isLoggedIn && <Route exact path="/" element={<Navigate to="/login" />} />}
           <Route path="*" element={<NotFound />} />
         </Routes>}
       {loading &&

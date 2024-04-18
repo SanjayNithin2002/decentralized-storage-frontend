@@ -15,7 +15,8 @@ import {
     MDBInputGroup
 } from 'mdb-react-ui-kit';
 
-const Login = () => {
+const Login = (props) => {
+    const {updateLoginState} = props;
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [userType, setUserType] = useState('users');
     const [modalContent, setModalContent] = useState(null);
@@ -36,6 +37,7 @@ const Login = () => {
                 localStorage.setItem('userType', userType);
                 localStorage.setItem('user', JSON.stringify(response.user));
                 localStorage.setItem('loginTime', Date.now());
+                updateLoginState(true);
                 navigate('/');
             }
             else if (response.status === 401) {
