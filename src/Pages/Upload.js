@@ -75,7 +75,7 @@ const Upload = () => {
                         <p className='px-3' style={{ color: 'hsl(217, 10%, 50.8%)', textAlign: 'justify', fontSize: '1.1rem' }}>
                             <span className="text-primary"> iii) Securely Disposing of the Key:  </span>
                             It's important to note that after the encryption process, the system should securely dispose of the key you uploaded.
-                            It is deleted using a CRON Job, which clears the uplod directory every five minutes.
+                            It is deleted using a CRON Job, which clears the upload directory every five minutes.
                         </p>
                         <p className='px-3' style={{ color: 'hsl(217, 10%, 50.8%)', textAlign: 'justify', fontSize: '1.1rem' }}>
                             <span className="text-primary">iv) Storing the Encrypted File: </span>
