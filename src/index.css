@@ -31,4 +31,8 @@ code {
   background-color: #055cb8;
 }
 
+.verify-modal{
+        width: 400px; 
+        word-wrap: break-word; 
+    }
 

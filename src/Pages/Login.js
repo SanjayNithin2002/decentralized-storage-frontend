@@ -36,7 +36,7 @@ const Login = () => {
                 localStorage.setItem('userType', userType);
                 localStorage.setItem('user', JSON.stringify(response.user));
                 localStorage.setItem('loginTime', Date.now());
-                setTimeout(() => navigate('/home'), 1000);
+                setTimeout(() => navigate('/'), 2000);
             }
             else if (response.status === 401) {
                 setModalContent(response.error)
@@ -54,7 +54,7 @@ const Login = () => {
 
 
     return (
-        <MDBContainer fluid className="m-0">
+        <MDBContainer fluid className="mb-4 m-0">
             <MDBRow className="align-items-start">
                 <InfoPane />
                 <MDBCol col='6' md='4' className="text-center text-md-end mx-3 my-auto px-auto pt-auto">

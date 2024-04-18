@@ -101,7 +101,7 @@ const Files = () => {
     }, []);
 
     return (
-        <MDBContainer>
+        <MDBContainer className='mb-4'>
             {files !== null &&
                 <FileTable
                     files={files}

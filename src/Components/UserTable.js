@@ -39,12 +39,7 @@ const UserTable = (props) => {
                             <tr key={user.id}>
                                 <td>
                                     <div className='d-flex align-items-center'>
-                                        <img
-                                            src='https://cdn-icons-png.freepik.com/512/9131/9131590.png'
-                                            alt=''
-                                            style={{ width: '35px', height: '35px' }}
-                                            className='rounded-circle'
-                                        />
+                                        <MDBIcon fas icon="user-circle" className='me-2 text-primary' size='3x'/>
                                         <div className='ms-3'>
                                             <p className='fw-bold mb-1'>{user.name}</p>
                                             <p className='text-muted mb-0'>{user.email}</p>

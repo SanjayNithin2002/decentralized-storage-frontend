@@ -5,10 +5,8 @@ import {
   MDBModalDialog,
   MDBModalContent,
   MDBModalHeader,
-  MDBModalTitle,
   MDBModalBody,
-  MDBModalFooter,
-  MDBInput,
+  MDBModalFooter
 } from 'mdb-react-ui-kit';
 
 const VerifyModal = (props) => {
@@ -23,7 +21,7 @@ const VerifyModal = (props) => {
               <strong>{props.title}</strong>
             </MDBModalHeader>
             <MDBModalBody>
-              <div className="text-start">
+              <div className="text-start verify-modal">
                 <p><strong>Calculated Merkle Root:</strong></p>
                 <p style={{ fontSize: '0.85em' }}>{props.body.calculatedMerkleRoot}</p>
                 <p><strong>Stored Merkle Root:</strong></p>

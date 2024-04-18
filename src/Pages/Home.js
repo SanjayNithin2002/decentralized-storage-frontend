@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
-import Navbar from "../Components/Navbar/Navbar";
-import { MDBContainer } from 'mdb-react-ui-kit';
-
-const Home = () => {
+import React, { useState } from "react";
+import { MDBContainer, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
+import { getKeys } from "../API/Actions";
+import Modal from "../Components/Modal";
+const KeysUser = () => {
+    
+    
     return (
-        <p>Home</p>
+        <div>
+            sup
+        </div>
     )
 }
 
-export default Home;
+export default KeysUser;

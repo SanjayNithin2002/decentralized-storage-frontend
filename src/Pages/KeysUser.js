@@ -31,7 +31,7 @@ const KeysUser = () => {
     }
     
     return (
-        <MDBContainer>
+        <MDBContainer className='mb-4'>
             <MDBBtn
                 id='generate-btn'
                 onClick={handleGetKeys}

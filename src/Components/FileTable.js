@@ -26,7 +26,6 @@ const FileTable = (props) => {
         });
         setVerifySpinner(null);
     }
-
     const handleDeleteChild = async (id) => {
         setDeleteSpinner(id);
         await handleDelete(id);
@@ -37,7 +36,7 @@ const FileTable = (props) => {
     return (
         <MDBTable align='middle' hover striped responsive>
             <MDBTableHead>
-                <tr className='bg-primary bg-gradient'>
+                <tr className='bg-primary'>
                     {headers &&
                         headers.map((header, index) => {
                             return (
@@ -54,11 +53,7 @@ const FileTable = (props) => {
                             <tr key={file.id}>
                                 <td>
                                     <div className='d-flex align-items-center'>
-                                        <img
-                                            src='https://cdn-icons-png.freepik.com/256/12532/12532956.png'
-                                            alt=''
-                                            style={{ width: '35px', height: '35px' }}
-                                        />
+                                        <MDBIcon fas icon="folder-open" className='me-2 text-primary' size='2x' />
                                         <div className='ms-3'>
                                             <p className='fw-bold mb-1'>{file.title}</p>
                                             <p className='text-muted mb-0'>{file.uploadedAt}</p>
@@ -82,19 +77,19 @@ const FileTable = (props) => {
                                     />
                                 </td>
                                 <td className='text-center'>
-                                    <MDBBtn color='primary' rippleColor='light' className='bg-primary bg-gradient rounded-4' onClick={e => handleViewChild(file.id)} size='sm'>
+                                    <MDBBtn color='primary' rippleColor='light' className='bg-primary  rounded-4' onClick={e => handleViewChild(file.id)} size='sm'>
                                         {viewSpinner !== null && viewSpinner === file.id && <MDBSpinner size='sm' role='status' tag='span' />}
                                         <span className='px-2'>View</span>
                                     </MDBBtn>
                                 </td>
                                 <td className='text-center'>
-                                    <MDBBtn color='primary' rippleColor='light' className='bg-primary bg-gradient rounded-4' size='sm' onClick={e => handleVerifyChild(file.id)}>
+                                    <MDBBtn color='primary' rippleColor='light' className='bg-primary rounded-4' size='sm' onClick={e => handleVerifyChild(file.id)}>
                                         {verifySpinner !== null && verifySpinner === file.id && <MDBSpinner size='sm' role='status' tag='span' />}
                                         <span className='px-2'>Verify</span>
                                     </MDBBtn>
                                 </td>
                                 <td className='text-center'>
-                                    <MDBBtn color='danger' rippleColor='light' className='bg-gradient rounded-4' size='sm' onClick={e => handleDeleteChild(file.id)} disabled={userType !== 'dataowners'}>
+                                    <MDBBtn color='danger' rippleColor='light' className='rounded-4' size='sm' onClick={e => handleDeleteChild(file.id)} disabled={userType !== 'dataowners'}>
                                         {deleteSpinner !== null && deleteSpinner === file.id && <MDBSpinner size='sm' role='status' tag='span' />}
                                         <MDBIcon className='px-2' fas icon="trash" />
                                     </MDBBtn>

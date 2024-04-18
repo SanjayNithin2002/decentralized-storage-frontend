@@ -7,6 +7,10 @@
         {
             "name": "Files",
             "endpoint": "/files"
+        }, 
+        {
+            "name": "Keys",
+            "endpoint": "/keys"
         }
     ],
     "dataowners": [
@@ -25,6 +29,10 @@
         {
             "name": "Upload",
             "endpoint": "/upload"
+        }, 
+        {
+            "name": "Keys",
+            "endpoint": "/keys"
         }
     ]
 }

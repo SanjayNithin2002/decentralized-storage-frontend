@@ -49,7 +49,7 @@ const Signup = () => {
         }
     };
     return (
-        <MDBContainer fluid className="m-0 d-flex justify-content-center align-items-center">
+        <MDBContainer fluid className="mb-4 m-0 d-flex justify-content-center align-items-center">
             <MDBRow >
                 <InfoPane />
                 <MDBCol col='6' md='4' className="text-center text-md-end mx-3 my-auto px-auto pt-auto pt-5 mt-4">

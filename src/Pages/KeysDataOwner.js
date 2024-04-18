@@ -49,7 +49,7 @@ const KeysDataOwner = () => {
     }
 
     return (
-        <MDBContainer>
+        <MDBContainer className='mb-4'>
             <MDBBtn
                 id='generate-btn'
                 onClick={handleGenerateKeys}

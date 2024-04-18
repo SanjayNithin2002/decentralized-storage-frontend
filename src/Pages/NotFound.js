@@ -9,7 +9,7 @@ const NotFound = () => {
   };
 
   return (
-    <MDBContainer className="mt-5 d-flex justify-content-center"> {/* Added class 'd-flex justify-content-center' to center content */}
+    <MDBContainer className="mb-4 mt-5 d-flex justify-content-center"> {/* Added class 'd-flex justify-content-center' to center content */}
         <MDBCol col="24" md="7" className="text-center text-md-start d-flex flex-column justify-content-center">
           <h1 className="text-center my-5 display-3 fw-bold ls-tight">
             404<br />

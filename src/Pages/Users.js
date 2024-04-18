@@ -3,7 +3,6 @@ import { MDBContainer } from 'mdb-react-ui-kit';
 import { getUsersByDept, approveUserById, deleteUserById } from '../API/Actions';
 import UserTable from '../Components/UserTable';
 import Modal from '../Components/Modal';
-
 const Users = () => {
     const [users, setUsers] = useState(null);
     const [modalContent, setModalContent] = useState(null);
@@ -52,7 +51,7 @@ const Users = () => {
     }, []);
 
     return (
-        <MDBContainer>
+        <MDBContainer className='mb-4'>
             {users !== null &&
                 <UserTable
                     handleApprove={handleAction(approveUserById)}
