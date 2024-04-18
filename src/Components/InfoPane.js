@@ -7,7 +7,7 @@ import {
 
 const InfoPane = () => {
     return (
-        <MDBCol col='18' md='7' className='p-5 text-center text-md-start d-flex flex-column justify-content-center px-auto py-auto'>
+        <MDBCol col='18' md='7' className='py-5 text-center text-md-start d-flex flex-column justify-content-center px-auto pt-auto my-auto mx-auto'>
             <div className="d-flex align-items-center mb-2">
                 <MDBIcon fab icon="dashcube" size="8x" className="me-2 text-primary" />
                 <h1 className="my-5 display-3 fw-bold ls-tight px-3">

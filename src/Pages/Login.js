@@ -59,7 +59,7 @@ const Login = (props) => {
         <MDBContainer fluid className="mb-4 m-0">
             <MDBRow className="align-items-start">
                 <InfoPane />
-                <MDBCol col='6' md='4' className="text-center text-md-end mx-3 my-auto px-auto pt-auto">
+                <MDBCol col='6' md='4' className="text-center text-md-end mx-auto my-auto px-auto pt-auto">
                     <div className='square border rounded-7 shadow-4'>
                         <div className='px-3 mt-4'>
                             <h3 className="text-center text-primary mb-4">Log into your account</h3>
