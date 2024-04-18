@@ -5,9 +5,7 @@ import {
     MDBTabsLink,
     MDBTabsContent,
     MDBTabsPane,
-    MDBIcon,
-    MDBRow,
-    MDBCol
+    MDBIcon
 } from 'mdb-react-ui-kit';
 import { useNavigate } from 'react-router-dom';
 import Users from './Users';
@@ -33,6 +31,8 @@ const Tabs = () => {
     }, [navigate]);
 
     const handleClick = (value) => {
+        if (tabsActive === value)
+            return;
         setTabsActive(value);
     };
 
@@ -98,6 +98,7 @@ const Tabs = () => {
                                 <MDBIcon fas icon="key" className='me-2' /> Keys
                             </MDBTabsLink>
                         </MDBTabsItem>
+                        <Profile />
                     </MDBTabs>
 
                     <MDBTabsContent>

@@ -29,7 +29,7 @@ const Popover = () => {
         <MDBIcon color='primary' icon="user-circle" className="mb-3" size="5x" />
         <div className="d-flex flex-column px-3">
           <p className='fw-normal fs-6 mb-0'>{user.name}</p>
-          <p className='text-muted fs-6 mb-0'>{userType === 'dataowners' ? 'Data Owner' : user.role}, {user.department}</p>
+          <p className='text-muted fs-6 mb-0'>{userType === 'dataowners' ? 'Data Owner' : user.role.split('_').join(' ')}, {user.department}</p>
         </div>
 
 

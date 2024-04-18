@@ -7,12 +7,13 @@ const FileTable = (props) => {
     const [verifySpinner, setVerifySpinner] = useState(null);
     const [deleteSpinner, setDeleteSpinner] = useState(null);
 
-    const handleViewChild = async (id) => {
+    const handleViewChild = async ({id, name}) => {
         setViewSpinner(id);
         const key = document.getElementById(id).files[0];
         await handleView({
             key,
-            id
+            id,
+            name
         });
         setViewSpinner(null);
     }
@@ -77,7 +78,7 @@ const FileTable = (props) => {
                                     />
                                 </td>
                                 <td className='text-center'>
-                                    <MDBBtn color='primary' rippleColor='light' className='bg-primary  rounded-4' onClick={e => handleViewChild(file.id)} size='sm'>
+                                    <MDBBtn color='primary' rippleColor='light' className='bg-primary  rounded-4' onClick={e => handleViewChild({id: file.id, name: file.originalName})} size='sm'>
                                         {viewSpinner !== null && viewSpinner === file.id && <MDBSpinner size='sm' role='status' tag='span' />}
                                         <span className='px-2'>View</span>
                                     </MDBBtn>

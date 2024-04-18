@@ -6,7 +6,6 @@ import NotFound from './Pages/NotFound';
 import Tabs from './Pages/Tabs';
 import validateLogin from './Hooks/validateLogin';
 import Loader from './Components/Loader';
-
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(validateLogin());
   const [loading, setLoading] = useState(true);
@@ -23,7 +22,6 @@ const App = () => {
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-
           {isLoggedIn && <Route exact path="/" element={<Tabs />} />}
           {!isLoggedIn && <Route exact path="/" element={<Navigate to="/login" />} />}
           <Route path="*" element={<NotFound />} />

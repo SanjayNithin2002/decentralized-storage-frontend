@@ -51,7 +51,7 @@ const Users = () => {
     }, []);
 
     return (
-        <MDBContainer className='mb-4'>
+        <MDBContainer className='mb-4 pt-3'>
             {users !== null &&
                 <UserTable
                     handleApprove={handleAction(approveUserById)}

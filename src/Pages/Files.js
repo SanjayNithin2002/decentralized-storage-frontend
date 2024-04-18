@@ -32,7 +32,8 @@ const Files = () => {
         }
     }
 
-    const handleView = async ({ id, key }) => {
+    const handleView = async ({ id, key, name }) => {
+        console.log(1);
         try {
             if (!key) {
                 throw Error('Please upload the key file.');
@@ -42,7 +43,7 @@ const Files = () => {
                 const url = URL.createObjectURL(data);
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = `downloaded_file_${Date.now()}`
+                link.download = name;
                 link.click();
             } else {
                 throw new Error(data.message || data.error || 'Unable to fetch');
@@ -101,7 +102,7 @@ const Files = () => {
     }, []);
 
     return (
-        <MDBContainer className='mb-4'>
+        <MDBContainer className='mb-4 pt-3'>
             {files !== null &&
                 <FileTable
                     files={files}

@@ -83,7 +83,7 @@ const Upload = () => {
                         </p>
                         <p className='px-3' style={{ color: 'hsl(217, 10%, 50.8%)', textAlign: 'justify', fontSize: '1.1rem' }}>
                             <span className="text-primary">v) Recording Information: </span>
-                            The system extracts the department of the user uploading the file from their JSOn Web Token.
+                            The system extracts the department of the user uploading the file from their JSON Web Token.
                             The department and role (given in the body), the Merkle root, file size, upload time, and other details are logged in a blockchain ledger.
                         </p>
                         <p className='px-3' style={{ color: 'hsl(217, 10%, 50.8%)', textAlign: 'justify', fontSize: '1.1rem' }}>
@@ -96,7 +96,7 @@ const Upload = () => {
                 <MDBCol col='6' md='4' className="text-center text-md-end mx-auto my-auto px-auto pt-auto">
                     <div className='square border rounded-7 shadow-4 mb-4'>
                         <div className='px-3 mt-4'>
-                            <h1 className="text-center text-primary mb-4">Upload</h1>
+                            <h3 className="text-center text-primary mb-4">Upload file</h3> 
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <MDBInput
                                     wrapperClass='mb-4'
