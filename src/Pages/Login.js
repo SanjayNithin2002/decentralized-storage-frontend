@@ -11,7 +11,8 @@ import {
     MDBBtn,
     MDBInput,
     MDBRadio,
-    MDBSpinner
+    MDBSpinner,
+    MDBInputGroup
 } from 'mdb-react-ui-kit';
 
 const Login = () => {
@@ -20,7 +21,7 @@ const Login = () => {
     const [modalContent, setModalContent] = useState(null);
     const [spinner, setSpinner] = useState(false);
     const navigate = useNavigate();
-    
+
     const onSubmit = async (data) => {
         setSpinner(true);
         try {
@@ -40,7 +41,7 @@ const Login = () => {
             else if (response.status === 401) {
                 setModalContent(response.error)
             }
-            else{
+            else {
                 setModalContent(response.error);
             }
         } catch (error) {
@@ -53,58 +54,61 @@ const Login = () => {
 
 
     return (
-        <MDBContainer fluid className="my-5 mt-0">
+        <MDBContainer fluid className="m-0">
             <MDBRow className="align-items-start">
-                <InfoPane/>
-                <MDBCol col='6' md='4' className="text-center text-md-end my-5 px-3 pt-5">
-                    <div className='square border rounded-7'>
-                        <div className='px-3 mt-5'>
-                            <h1 className="text-center text-primary mb-4">Login to your account</h1>
+                <InfoPane />
+                <MDBCol col='6' md='4' className="text-center text-md-end mx-3 my-auto px-auto pt-auto">
+                    <div className='square border rounded-7 shadow-4'>
+                        <div className='px-3 mt-4'>
+                            <h1 className="text-center text-primary mb-4">Log into your account</h1>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <MDBInput
                                     wrapperClass='mb-4'
                                     label='Email address'
                                     id='email'
                                     type='email'
-                                    size="lg"
+                                    size='lg'
                                     {...register('email', { required: 'Email is required' })}
                                 />
-                                {errors.email && <p>{errors.email.message}</p>}
+                                {errors.email && <p className='text-primary'>{errors.email.message}</p>}
                                 <MDBInput
                                     wrapperClass='mb-4'
                                     label='Password'
                                     id='password'
                                     type='password'
-                                    size="lg"
+                                    size='lg'
                                     {...register('password', { required: 'Password is required' })}
                                 />
-                                {errors.password && <p>{errors.password.message}</p>}
-                                <div className="d-flex justify-content-center mx-4 mb-4 col-md-10 align-items-center">
-                                    <MDBRadio
-                                        name='userType'
-                                        id='dataOwner'
-                                        value='dataowners'
-                                        label='Data Owner'
-                                        checked={userType === 'dataowners'}
-                                        onChange={() => setUserType('dataowners')}
-                                        inline
-                                    />
-                                    <MDBRadio
-                                        name='userType'
-                                        id='user'
-                                        value='users'
-                                        label='User'
-                                        checked={userType === 'users'}
-                                        onChange={() => setUserType('users')}
-                                        inline
-                                    />
+                                {errors.password && <p className='text-primary'>{errors.password.message}</p>}
+                                <div className="mb-4 col-md-12 align-items-center d-flex flex-column flex-md-row justify-content-center">
+                                    <div className="d-flex justify-content-center align-items-center">
+                                        <MDBRadio
+                                            name='userType'
+                                            id='dataOwner'
+                                            value='dataowners'
+                                            label='Data Owner'
+                                            checked={userType === 'dataowners'}
+                                            onChange={() => setUserType('dataowners')}
+                                            inline
+                                        />
+                                        <MDBRadio
+                                            name='userType'
+                                            id='user'
+                                            value='users'
+                                            label='User'
+                                            checked={userType === 'users'}
+                                            onChange={() => setUserType('users')}
+                                            inline
+                                        />
+                                    </div>
                                 </div>
-                                <MDBBtn className="mb-4 w-100" size="lg" type="submit">
+
+                                <MDBBtn className="mb-3 w-100" size='lg' type="submit">
                                     {spinner && <MDBSpinner size='sm' role='status' tag='span' />}
                                     <span className='px-2'>Login</span>
                                 </MDBBtn>
                             </form>
-                            <p className="mb-5 pb-lg-2 text-center">Don't have an account? <span className='pointer text-primary' onClick={e => navigate('/signup')}>Signup</span></p>
+                            <p className="mb-4 pb-lg-2 text-center">Don't have an account? <span className='pointer text-primary' onClick={e => navigate('/signup')}>Signup</span></p>
                         </div>
                     </div>
                 </MDBCol>

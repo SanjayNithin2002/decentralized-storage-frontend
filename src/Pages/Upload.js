@@ -66,7 +66,7 @@ const Upload = () => {
                                     size="lg"
                                     {...register('title', { required: 'Title is required' })}
                                 />
-                                {errors.title && <p>{errors.title.message}</p>}
+                                {errors.title && <p className='text-primary'>{errors.title.message}</p>}
 
                                 <select
                                     className={!selected ? "form-select mb-4 text-muted" : "form-select mb-4"}
@@ -88,7 +88,7 @@ const Upload = () => {
                                         }
                                     })}
                                 </select>
-                                {errors.role && <p>{errors.role.message}</p>}
+                                {errors.role && <p className='text-primary'>{errors.role.message}</p>}
 
                                 <MDBFile
                                     label='File'
@@ -96,7 +96,7 @@ const Upload = () => {
                                     name='file'
                                     {...register('file', { required: 'File is required' })}
                                 />
-                                {errors.file && <p>{errors.file.message}</p>}
+                                {errors.file && <p className='text-primary'>{errors.file.message}</p>}
                                 <br />
 
                                 <MDBFile
@@ -106,7 +106,7 @@ const Upload = () => {
                                     accept='.key'
                                     {...register('key', { required: 'Key is required' })}
                                 />
-                                {errors.key && <p>{errors.key.message}</p>}
+                                {errors.key && <p className='text-primary'>{errors.key.message}</p>}
                                 <br />
 
 

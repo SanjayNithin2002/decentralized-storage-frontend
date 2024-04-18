@@ -49,13 +49,13 @@ const Signup = () => {
         }
     };
     return (
-        <MDBContainer fluid className="my-5 mt-0">
-            <MDBRow className="align-items-start">
+        <MDBContainer fluid className="m-0 d-flex justify-content-center align-items-center">
+            <MDBRow >
                 <InfoPane />
-                <MDBCol col='6' md='4' className="text-center text-md-end mt-5 px-3">
-                    <div className='square border rounded-7'>
-                        <div className='px-3 mt-5'>
-                            <h1 className="text-center text-primary mb-4 mt-4">Create a new account</h1>
+                <MDBCol col='6' md='4' className="text-center text-md-end mx-3 my-auto px-auto pt-auto pt-5 mt-4">
+                    <div className='square border rounded-7 shadow-4'>
+                        <div className='px-3 mt-4'>
+                            <h1 className="text-center text-primary mb-4">Create a new account</h1>
                             <MDBInput
                                 wrapperClass='mb-4'
                                 label='Name'
@@ -64,7 +64,7 @@ const Signup = () => {
                                 size="lg"
                                 {...register('name', { required: 'Name is required' })}
                             />
-                            {errors.name && <p>{errors.name.message}</p>}
+                            {errors.name && <p className='text-primary'>{errors.name.message}</p>}
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <MDBInput
                                     wrapperClass='mb-4'
@@ -74,7 +74,7 @@ const Signup = () => {
                                     size="lg"
                                     {...register('email', { required: 'Email is required' })}
                                 />
-                                {errors.email && <p>{errors.email.message}</p>}
+                                {errors.email && <p className='text-primary'>{errors.email.message}</p>}
                                 <MDBInput
                                     wrapperClass='mb-4'
                                     label='Password'
@@ -83,7 +83,7 @@ const Signup = () => {
                                     size="lg"
                                     {...register('password', { required: 'Password is required' })}
                                 />
-                                {errors.password && <p>{errors.password.message}</p>}
+                                {errors.password && <p className='text-primary'>{errors.password.message}</p>}
                                 <select
                                     className={department === '' ? "form-select mb-4 text-muted" : "form-select mb-4"}
                                     id="department"
@@ -104,7 +104,7 @@ const Signup = () => {
                                         </option>
                                     ))}
                                 </select>
-                                {errors.department && <p>{errors.department.message}</p>}
+                                {errors.department && <p className='text-primary'>{errors.department.message}</p>}
                                 <select
                                     className={!selected ? "form-select mb-4 text-muted" : "form-select mb-4"}
                                     id="role"
@@ -121,13 +121,13 @@ const Signup = () => {
                                         </option>
                                     ))}
                                 </select>
-                                {errors.role && <p>{errors.role.message}</p>}
-                                <MDBBtn className="mb-4 w-100" size="lg" type="submit">
+                                {errors.role && <p className='text-primary'>{errors.role.message}</p>}
+                                <MDBBtn className="mb-3 w-100" size="lg" type="submit">
                                     {spinner && <MDBSpinner size='sm' role='status' tag='span' />}
                                     <span className='px-2'>Signup</span>
                                 </MDBBtn>
                             </form>
-                            <p className="mb-5 pb-lg-2 text-center">Already have an account? <span className='pointer text-primary' onClick={e => navigate('/login')}>Login</span></p>
+                            <p className="mb-4 pb-lg-2 text-center">Already have an account? <span className='pointer text-primary' onClick={e => navigate('/login')}>Login</span></p>
                         </div>
                     </div>
                 </MDBCol>

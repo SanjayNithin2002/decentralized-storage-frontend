@@ -19,9 +19,9 @@ const Modal = (props) => {
       tabIndex='-1'
       setOpen={setTopRightModal}
     >
-      <MDBModalDialog className="bottom-right-modal" size="sm">
+      <MDBModalDialog className="bottom-right-modal" size="lg">
         <MDBModalContent>
-          <MDBModalBody className='bg-primary text-white'>
+          <MDBModalBody className='text-white rounded-4' style={{backgroundColor: '#055cb8'}}>
             {props.title}
             <MDBBtn
               color='none'
