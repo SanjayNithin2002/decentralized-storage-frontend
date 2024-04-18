@@ -80,7 +80,7 @@ const KeysDataOwner = () => {
                         </p>
                         <p className='px-3' style={{ color: 'hsl(217, 10%, 50.8%)', textAlign: 'justify', fontSize: '1.1rem' }}>
                             <span className="text-primary">v) Time-Sensitive Deletion: </span>
-                            To maintain optimal security, it is recommendedto clear the keys within a maximum of 24 hours after generation.
+                            To maintain optimal security, it is recommended to clear the keys within a maximum of 24 hours after generation.
                         </p>
                     </MDBRow>
                 </MDBCol>
