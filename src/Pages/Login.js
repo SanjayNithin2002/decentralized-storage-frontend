@@ -36,7 +36,7 @@ const Login = () => {
                 localStorage.setItem('userType', userType);
                 localStorage.setItem('user', JSON.stringify(response.user));
                 localStorage.setItem('loginTime', Date.now());
-                setTimeout(() => navigate('/'), 5000);
+                navigate('/');
             }
             else if (response.status === 401) {
                 setModalContent(response.error)

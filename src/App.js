@@ -7,23 +7,23 @@ import Tabs from './Pages/Tabs';
 import validateLogin from './Hooks/validateLogin';
 import Loader from './Components/Loader';
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(validateLogin());
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoggedIn(validateLogin());
+    validateLogin();
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, [isLoggedIn]);
+  }, []);
+
   return (
     <Router>
       {!loading &&
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-          {isLoggedIn && <Route exact path="/" element={<Tabs />} />}
-          {!isLoggedIn && <Route exact path="/" element={<Navigate to="/login" />} />}
+          {localStorage.getItem('loginTime') && <Route exact path="/" element={<Tabs />} />}
+          {!localStorage.getItem('loginTime') && <Route exact path="/" element={<Navigate to="/login" />} />}
           <Route path="*" element={<NotFound />} />
         </Routes>}
       {loading &&
