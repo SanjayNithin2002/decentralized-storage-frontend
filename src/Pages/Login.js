@@ -36,7 +36,7 @@ const Login = () => {
                 localStorage.setItem('userType', userType);
                 localStorage.setItem('user', JSON.stringify(response.user));
                 localStorage.setItem('loginTime', Date.now());
-                setTimeout(() => navigate('/'), 2000);
+                setTimeout(() => navigate('/'), 5000);
             }
             else if (response.status === 401) {
                 setModalContent(response.error)
@@ -60,7 +60,7 @@ const Login = () => {
                 <MDBCol col='6' md='4' className="text-center text-md-end mx-3 my-auto px-auto pt-auto">
                     <div className='square border rounded-7 shadow-4'>
                         <div className='px-3 mt-4'>
-                            <h1 className="text-center text-primary mb-4">Log into your account</h1>
+                            <h3 className="text-center text-primary mb-4">Log into your account</h3>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <MDBInput
                                     wrapperClass='mb-4'

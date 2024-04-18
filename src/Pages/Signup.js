@@ -55,7 +55,7 @@ const Signup = () => {
                 <MDBCol col='6' md='4' className="text-center text-md-end mx-3 my-auto px-auto pt-auto pt-5 mt-4">
                     <div className='square border rounded-7 shadow-4'>
                         <div className='px-3 mt-4'>
-                            <h1 className="text-center text-primary mb-4">Create a new account</h1>
+                            <h3 className="text-center text-primary mb-4">Create a new account</h3>
                             <MDBInput
                                 wrapperClass='mb-4'
                                 label='Name'
