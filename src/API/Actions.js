@@ -1,4 +1,20 @@
-import { fetchAPI, fetchAPIForFile } from './fetchAPI';
+import fetchAPI from './fetchAPI';
+
+const getToken = () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw Error('Login again.');
+    }
+    return token;
+}
+
+const getDepartment = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user?.department) {
+        throw Error('Login again.');
+    }
+    return user.department;
+}
 
 const loginUser = async (props) => {
     const { email, password, userType } = props;
@@ -23,22 +39,16 @@ const signupUser = async (props) => {
             name,
             department,
             role
-        }
+        },
     })
 };
 
 const getUsersByDept = async () => {
     try {
-        const user = JSON.parse(localStorage.getItem('user'));
-        const dept = user.department;
-        const token = localStorage.getItem('token');
-        if (token === null || dept === null) {
-            throw Error('Login again.');
-        }
         return fetchAPI({
             method: 'GET',
-            endpoint: `users/dept/${dept}`,
-            token: token
+            endpoint: `users/dept/${getDepartment()}`,
+            token: getToken()
         })
     } catch (error) {
         throw error;
@@ -47,14 +57,10 @@ const getUsersByDept = async () => {
 
 const approveUserById = async (id) => {
     try {
-        const token = localStorage.getItem('token');
-        if (token === null) {
-            throw Error('Login again.');
-        }
         return fetchAPI({
             method: 'PATCH',
             endpoint: `users/approve/${id}`,
-            token: token
+            token: getToken()
         })
     } catch (error) {
         throw error;
@@ -63,14 +69,10 @@ const approveUserById = async (id) => {
 
 const deleteUserById = async (id) => {
     try {
-        const token = localStorage.getItem('token');
-        if (token === null) {
-            throw Error('Login again.');
-        }
         return fetchAPI({
             method: 'DELETE',
             endpoint: `users/${id}`,
-            token: token
+            token: getToken()
         })
     } catch (error) {
         throw error;
@@ -78,8 +80,8 @@ const deleteUserById = async (id) => {
 };
 
 const postFile = async (props) => {
-    const { title, role, key, file, token } = props;
-    return fetchAPIForFile({
+    const { title, role, key, file } = props;
+    return fetchAPI({
         method: 'POST',
         endpoint: `files`,
         body: {
@@ -88,8 +90,104 @@ const postFile = async (props) => {
             key,
             file
         },
-        token: token
+        token: getToken(),
+        postFile: true
     });
+};
+
+const getFilesByDept = async () => {
+    try {
+        return fetchAPI({
+            method: 'GET',
+            endpoint: `files/dept/${getDepartment()}`,
+            token: getToken()
+        })
+    } catch (error) {
+        throw error;
+    }
+};
+
+const getFileById = async ({ id, key }) => {
+    try {
+        return fetchAPI({
+            method: 'POST',
+            endpoint: `files/${id}`,
+            token: getToken(),
+            body: {
+                key
+            },
+            postFile: true,
+            downloadFile: true
+        })
+    } catch (error) {
+        throw error;
+    }
 }
 
-export { loginUser, signupUser, getUsersByDept, approveUserById, deleteUserById, postFile };
+const verifyFileById = async ({ id, key }) => {
+    try {
+        return fetchAPI({
+            method: 'POST',
+            endpoint: `files/integrity/${id}`,
+            token: getToken(),
+            body: {
+                key
+            },
+            postFile: true,
+        })
+    } catch (error) {
+        throw error;
+    }
+}
+
+const deleteFileById = async (id) => {
+    try {
+        return fetchAPI({
+            method: 'DELETE',
+            endpoint: `files/${id}`,
+            token: getToken(),
+        })
+    } catch (error) {
+        throw error;
+    }
+}
+
+const clearKeys = async () => {
+    try {
+        return fetchAPI({
+            method: 'POST',
+            endpoint: `dataowners/clearkeys`,
+            token: getToken(),
+        })
+    } catch (error) {
+        throw error;
+    }
+}
+
+const generateKeys = async () => {
+    try {
+        return fetchAPI({
+            method: 'GET',
+            endpoint: `dataowners/secretkeys`,
+            token: getToken(),
+            downloadFile: true
+        })
+    } catch (error) {
+        throw error;
+    }
+}
+
+const getKeys = async () => {
+    try {
+        return fetchAPI({
+            method: 'GET',
+            endpoint: `users/secretkeys`,
+            token: getToken(),
+            downloadFile: true
+        })
+    } catch (error) {
+        throw error;
+    }
+}
+
+export { loginUser, signupUser, getUsersByDept, approveUserById, deleteUserById, postFile, getFilesByDept, getFileById, verifyFileById, deleteFileById, clearKeys, generateKeys, getKeys };

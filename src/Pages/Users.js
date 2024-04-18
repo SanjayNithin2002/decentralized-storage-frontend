@@ -4,7 +4,7 @@ import { getUsersByDept, approveUserById, deleteUserById } from '../API/Actions'
 import UserTable from '../Components/UserTable';
 import Modal from '../Components/Modal';
 
-const Table = () => {
+const Users = () => {
     const [users, setUsers] = useState(null);
     const [modalContent, setModalContent] = useState(null);
 
@@ -17,7 +17,7 @@ const Table = () => {
                 }
                 return data;
             } else if (data.status >= 400 && data.status <= 500) {
-                throw new Error(data.message || data.error || 'Unable to fetch');
+                throw new Error(data.error || 'Unable to fetch');
             }
         } catch (err) {
             setModalContent(err.message);
@@ -67,4 +67,4 @@ const Table = () => {
     );
 }
 
-export default Table;
+export default Users;

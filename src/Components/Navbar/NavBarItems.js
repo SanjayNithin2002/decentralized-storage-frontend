@@ -4,12 +4,11 @@ import {
     MDBNavbarLink,
 } from 'mdb-react-ui-kit';
 import { useNavigate } from 'react-router-dom';
-import getUserType from '../../Hooks/getUserType';
 import pageAccessList from '../../Hooks/pageAccessList';
 
 const NavBarItems = () => {
     const navigate = useNavigate();
-    const userType = getUserType();
+    const userType = localStorage.getItem('userType');
     if (!userType) return null;
 
     const accessList = pageAccessList(userType);

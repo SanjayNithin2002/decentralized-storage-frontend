@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { postFile } from '../API/Actions';
 import Modal from '../Components/Modal';
 import InfoPane from '../Components/InfoPane';
-import Roles from '../Resources/Roles.json';
+import {getRoles} from '../Hooks/rolesList';
 import {
     MDBContainer,
     MDBCol,
@@ -26,20 +26,14 @@ const Upload = () => {
     }
 
     const onSubmit = async (data) => {
-        const token = localStorage.getItem('token');
         setSpinner(true);
         try {
-            if (!token) {
-                throw Error('Invalid Token');
-            }
             const response = await postFile({
                 title: data.title,
                 role: data.role,
-                token: token,
                 key: data.key[0],
                 file: data.file[0]
             });
-            console.log(response);
             if (response?.status === 201) {
                 setModalContent(response.message);
             }
@@ -84,7 +78,7 @@ const Upload = () => {
                                     }}
                                 >
                                     <option value="" disabled selected>Select Role</option>
-                                    {department !== '' && Roles[department].map((value, index) => {
+                                    {department !== '' && getRoles(department).map((value, index) => {
                                         if (value !== 'DataOwners') {
                                             return (
                                                 <option key={index} value={value}>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import { signupUser } from '../API/Actions';
-import Roles from '../Resources/Roles.json';
+import {getDepartments, getRoles} from '../Hooks/rolesList';
 import Modal from '../Components/Modal';
 import InfoPane from '../Components/InfoPane';
 import {
@@ -95,7 +95,7 @@ const Signup = () => {
                                     }}
                                 >
                                     <option value="" disabled selected>Select Department</option>
-                                    {Object.keys(Roles).map((key) => (
+                                    {getDepartments().map((key) => (
                                         <option
                                             key={key}
                                             value={key}
@@ -115,7 +115,7 @@ const Signup = () => {
                                     }}
                                 >
                                     <option value="" disabled selected>Select Role</option>
-                                    {department !== '' && Roles[department].map((value, index) => (
+                                    {department !== '' && getRoles(department).map((value, index) => (
                                         <option key={index} value={value}>
                                             {value}
                                         </option>

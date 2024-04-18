@@ -6,9 +6,10 @@ import Home from './Pages/Home';
 import Files from './Pages/Files';
 import Users from './Pages/Users';
 import Upload from './Pages/Upload';
+import KeysDataOwner from './Pages/KeysDataOwner';
+import KeysUser from './Pages/KeysUser';
 import NotFound from './Pages/NotFound';
 import validateLogin from './Hooks/validateLogin';
-import getUserType from './Hooks/getUserType';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(validateLogin());
@@ -22,8 +23,10 @@ function App() {
 
         {isLoggedIn && <Route exact path="/home" element={<Home />} />}
         {isLoggedIn && <Route exact path="/files" element={<Files />} />}
-        {isLoggedIn && getUserType() === 'dataowners' && <Route exact path="/users" element={<Users />} />}
-        {isLoggedIn && getUserType() === 'dataowners' && <Route exact path="/upload" element={<Upload />} />}
+        {isLoggedIn && localStorage.getItem('userType') === 'dataowners' && <Route exact path="/users" element={<Users />} />}
+        {isLoggedIn && localStorage.getItem('userType') === 'dataowners' && <Route exact path="/upload" element={<Upload />} />}
+        {isLoggedIn && localStorage.getItem('userType') === 'dataowners' && <Route exact path="/keys" element={<KeysDataOwner />} />}
+        {isLoggedIn && localStorage.getItem('userType') === 'users' && <Route exact path="/keys" element={<KeysUser />} />}
 
         {!isLoggedIn && <Route exact path="/home" element={<Navigate to="/login" />} />}
         {!isLoggedIn && <Route exact path="/files" element={<Navigate to="/login" />} />}

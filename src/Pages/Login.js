@@ -20,6 +20,7 @@ const Login = () => {
     const [modalContent, setModalContent] = useState(null);
     const [spinner, setSpinner] = useState(false);
     const navigate = useNavigate();
+    
     const onSubmit = async (data) => {
         setSpinner(true);
         try {
