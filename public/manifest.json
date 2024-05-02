@@ -3,14 +3,9 @@
   "name": "Decentralized Storage",
   "icons": [
     {
-      "src": "https://static-00.iconduck.com/assets.00/dashcube-icon-403x512-z8nq8ule.png",
+      "src": "dashcube.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "https://static-00.iconduck.com/assets.00/dashcube-icon-403x512-z8nq8ule.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "64x64 32x32 24x24 16x16 192x192 512x512"
     }
   ],
   "start_url": ".",
