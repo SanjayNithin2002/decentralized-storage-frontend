@@ -40,7 +40,7 @@ const Tabs = () => {
         <>
             {userType !== null && userType === 'dataowners' &&
                 <>
-                    <MDBTabs justify className='mb-3'>
+                    <MDBTabs fill className='mb-3'>
                         <MDBTabsItem>
                             <MDBTabsLink onClick={() => handleClick('home')} active={tabsActive === 'home'}>
                                 <MDBIcon fas icon="home" className='me-2' />Home

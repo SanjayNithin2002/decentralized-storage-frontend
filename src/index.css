@@ -23,16 +23,16 @@ code {
   margin: 25px;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
-.bg-color{
+.bg-color {
   background-color: #055cb8;
 }
 
-.verify-modal{
-        width: 400px; 
-        word-wrap: break-word; 
-    }
+.verify-modal {
+  width: 400px;
+  word-wrap: break-word;
+}
 
